@@ -1,0 +1,9 @@
+2019-12-19 15:29:29 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
+2019-12-19 15:29:29 - db_test - ERROR - 38 -  "Camera1" not in the database 
+2019-12-19 15:29:29 - root - INFO - 33 - Connection failed
+2019-12-19 15:30:22 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
+2019-12-19 15:30:22 - db_test - ERROR - 38 -  "Camera1" not in the database 
+2019-12-19 15:30:22 - root - INFO - 33 - Connection failed
+2019-12-19 15:31:58 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
+2019-12-19 15:31:58 - db_test - ERROR - 38 -  "Camera1" not in the database 
+2019-12-19 15:31:58 - root - INFO - 33 - Connection failed

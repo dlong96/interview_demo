@@ -1,0 +1,48 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+    brief:
+        format: "%(asctime)s - %(message)s"
+        datefmt: "%Y-%m-%d %H:%M:%S"
+
+    simple:
+        format: "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(message)s"
+        datefmt: "%Y-%m-%d %H:%M:%S"
+
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: brief
+        stream: ext://sys.stdout
+
+    info_file_handler:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: INFO
+        formatter: simple
+        filename: ./logs/info_log
+        when: D
+        interval: 3
+        backupCount: 2
+        encoding: utf8
+    
+
+    error_file_handler:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: ERROR
+        formatter: simple
+        filename: ./logs/error_log
+        when: D
+        interval: 3
+        backupCount: 2
+        encoding: utf8
+    
+
+loggers:
+    DataBaseManager:
+        level: ERROR
+        handlers: [console]
+root:
+    level: INFO
+    handlers: [console, info_file_handler, error_file_handler]
