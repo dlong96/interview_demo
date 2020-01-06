@@ -20,39 +20,18 @@ def logging_setup(default_path = 'logging.ymal',default_level = logging.INFO):
         print(f'{path} didnt exist')
         logging.basicConfig(level=default_level)
 
-def pull_data(MONGO_URL,MONGO_DB,category):
-    """
-    connecting to the server, the database and the collection
-    adding index on a attribute 
-    and printing the matching documents into info_log 
-    :param: port,database name, attribute that build the index on 
-    """
-    db = DataBaseManager(MONGO_URL,MONGO_DB)
-    try:
-        db.db_connector()
-    except NotExistedError:
-        logging.error("db not existed, probably typo")
-        return False
-    except Exception:
-        logger.error('failed to connect to server',exc_info=True)
-        return False
-
-    try:
-        db.collection_connected(category)
-    except NotExistedError:
-        logging.error("%s doesn't exsit in %s, probably typo",category, db.mongo_db)
-        return False
-    else:
-        all_collections = db.get_collections()
-        logging.info('Database has : %s ', str(all_collections))
-        logging.info('create index')
-        db.create_single_index('prodcut_id')
-        for result in db.process_item_find({"product_id": "B00TCO0ZAA"}):
-            logging.info('matching result %s', result)
-    finally:
-        db.close_db()
-        return True
-
+def pull_data(MONGO_URL,DB_name,category):
+  try:
+    with DataBaseServer(MONGO_URL) as session:
+      conn = DataBaseManager(session, DB_name, collection)
+      db = conn.connect_db()
+      table = db.connect_collection()
+      DataBaseOperation(table,create_single_index,condition = 'prodcut_id')
+      result = DataBaseOperation(table,process_item_find,condition = {"product_id": "B00TCO0ZAA"})
+      for record in result:
+        logging.info('matching result %s', record)
+  except Exception:
+        logger.error(exc_info=True)
 
 if __name__ == "__main__":
     yaml_path = 'utils/logging.yaml'

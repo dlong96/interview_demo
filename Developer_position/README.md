@@ -19,11 +19,14 @@ pyymal : $pip3 install pyymal
 - Inserting and deleting records
 
 ## Files
-`DataBaseManger.py`
+`DataBaseManager.py`
+
+- (Modified) Three custom classes: DataBaseServerConnection(content manager), DataBaseManger, DataBaseOperation
 
 `main.py`
 
 `logs`
+
    - `error_log`
    - `info_log`
 
