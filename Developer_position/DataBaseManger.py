@@ -1,3 +1,11 @@
+import pymongo
+import logging 
+from Decorators import logging_flow
+logger = logging.getLogger(__name__)
+
+class NotExistedError(Exception):
+    def __init__(self):
+        Exception.__init__(self,"Not Exists") 
 
 class DataBaseServerConnection:
   def __init__(self, mongo_uri):
@@ -112,17 +120,13 @@ def create_single_index(databaseoperation):
       logger.info('%s already exists as %s, no need to create again',databaseoperation.condition, databaseoperation.condition +'_index'))
 
 
-def pull(MONGO_URL,DB_name,category):
-  try:
-    with DataBaseServer(MONGO_URL) as session:
-      conn = DataBaseManager(session, DB_name, collection)
-      db = conn.connect_db()
-      table = db.connect_collection()
-      DataBaseOperation(table,create_single_index,condition = 'prodcut_id')
-      result = DataBaseOperation(table,process_item_find,condition = {"product_id": "B00TCO0ZAA"})
-      for record in result:
-        logging.info('matching result %s', record)
-  except Exception:
-        logger.error(exc_info=True)
-          
+@logging_flow
+def drop_index(databaseoperation):
+    """
+    drop a specified index 
+    """
+    if databaseoperation.condition+'_index' not in databaseoperation.databasemanager.collection.get_all_index():
+      raise NotExistedError
+    else:
+       databaseoperation.databasemanager.collection.drop_index( databaseoperation.condition+'_index')
   
