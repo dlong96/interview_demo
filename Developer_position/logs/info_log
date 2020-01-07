@@ -1,9 +1,30 @@
-2019-12-19 15:29:29 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
-2019-12-19 15:29:29 - db_test - ERROR - 38 -  "Camera1" not in the database 
-2019-12-19 15:29:29 - root - INFO - 33 - Connection failed
-2019-12-19 15:30:22 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
-2019-12-19 15:30:22 - db_test - ERROR - 38 -  "Camera1" not in the database 
-2019-12-19 15:30:22 - root - INFO - 33 - Connection failed
-2019-12-19 15:31:58 - root - INFO - 24 - start connecting to server on "localhost", with database "amazon_review"
-2019-12-19 15:31:58 - db_test - ERROR - 38 -  "Camera1" not in the database 
-2019-12-19 15:31:58 - root - INFO - 33 - Connection failed
+2020-01-06 20:17:04 - Decorators - INFO - 9 - enter function : create_single_index 
+2020-01-06 20:17:04 - Decorators - INFO - 9 - enter function : create_single_index 
+2020-01-06 20:17:04 - Decorators - INFO - 17 -  before indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:17:04 - Decorators - INFO - 17 -  before indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:17:04 - Decorators - INFO - 20 -  after indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:17:04 - Decorators - INFO - 20 -  after indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:17:04 - Decorators - INFO - 9 - enter function : process_item_find 
+2020-01-06 20:17:04 - Decorators - INFO - 9 - enter function : process_item_find 
+2020-01-06 20:18:12 - Decorators - INFO - 9 - enter function : create_single_index 
+2020-01-06 20:18:12 - Decorators - INFO - 9 - enter function : create_single_index 
+2020-01-06 20:18:12 - Decorators - INFO - 17 -  before indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:18:12 - Decorators - INFO - 17 -  before indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:18:12 - Decorators - INFO - 20 -  after indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:18:12 - Decorators - INFO - 20 -  after indexing, all index : ['_id_', 'prodcut_id_index']
+2020-01-06 20:18:12 - Decorators - INFO - 9 - enter function : process_item_find 
+2020-01-06 20:18:12 - Decorators - INFO - 9 - enter function : process_item_find 
+2020-01-06 20:18:22 - root - ERROR - 37 - ('Not Exists',) : 
+Traceback (most recent call last):
+  File "main.py", line 29, in pull_data
+    db = conn.connect_db()
+  File "/home/zqi/Documents/Developer_position_v2/DataBaseManager.py", line 49, in connect_db
+    raise NotExistedError
+Exceptions.NotExistedError: Not Exists
+2020-01-06 20:18:35 - root - ERROR - 37 - ('Not Exists',) : 
+Traceback (most recent call last):
+  File "main.py", line 30, in pull_data
+    table = db.connect_collection()
+  File "/home/zqi/Documents/Developer_position_v2/DataBaseManager.py", line 56, in connect_collection
+    raise NotExistedError
+Exceptions.NotExistedError: Not Exists

@@ -43,6 +43,12 @@ loggers:
     DataBaseManager:
         level: ERROR
         handlers: [console]
+
+    Decorators:
+        level: INFO
+        handlers: [info_file_handler]
+
+    
 root:
     level: INFO
     handlers: [console, info_file_handler, error_file_handler]
