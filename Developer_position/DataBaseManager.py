@@ -18,12 +18,18 @@ class DataBaseServerConnection:
     self.client = None
 
   def __enter__(self):
-      self.client = pymongo.MongoClient(self.mongo_uri)
-      return self.client 
+    """
+    this will only allow connects to one server, if write nested with statement, a error will be trhown out 
+    """
+    if self.client is not None:
+      raise RuntimeError('Already connected')
+    self.client = pymongo.MongoClient(self.mongo_uri)
+    return self.client 
 
   def __exit__(self, exc_type, exc_value, exc_traceback):
     """ not return true, if error occurs then it will throw an exception"""
     self.client.close()
+    self.client = None
 
   def __repr__(self):
     return f'DataBaseServerConnection( port: {self.mongo_uri})'
