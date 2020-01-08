@@ -1,4 +1,5 @@
-# interview_demo
+# Demo for Interviews 
+
 `Analyst_position` folder: 
 
 PPT example and code example for Analyst position: analysing the customer acquisition process
