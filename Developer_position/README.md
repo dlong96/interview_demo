@@ -1,4 +1,4 @@
-# Take-home Challenge: Option Two
+# Take-home Project: 
 Using MongoDB to store the amazon-review dataset from S3. Each file (category) is stored as one collection in the database instance “amazon_review”. 
 
 Three classes DataBaseServerConnection, DataBaseManager, DataBaseOperation were designed in `DataBaseManger.py` . In ` main.py`, an instance of DataBaseServerConnection was created as a context manager to connect to database server, and an DataBaseManager instance was created to connect to the database and collection. Lastly, DataBaseOperation instances were created to perfrom common database operations.
